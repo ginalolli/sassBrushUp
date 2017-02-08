@@ -1,0 +1,102 @@
+
+//practice with @for to assign unique color to each nav link
+// @for $i from 1 through 7 { //$i var only exists for this list
+//     .link-#{$i} {
+//       color: nth($color-nav-links, $i);
+//     }
+//   }
+
+//practice with @each to assign unique color to each nav link
+
+// $color-link-names: 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh';
+// $color-nav-links: $blue, $purple, $green, $red, $orange, $yellow, $offwhite;
+//
+// @each $name in $color-link-names {
+// 	$i: index($color-link-names, $name);
+//
+// 	.link-#{$name} {
+// 		color: nth($color-nav-links, $i);
+// 	}
+// }
+
+//practice with map data types to assign unique color to nav link
+//the keys (classes) need to be added in html, ie link-first etc
+$color-links: (
+	first: $color-main,
+	second: $red,
+	third: $blue,
+	fourth: $purple,
+	fifth: $orange,
+	sixth: $yellow,
+	seventh: $offwhite
+);
+
+@each $key, $value in $color-links {
+	.link-#{$key} {
+		color: $value;
+	}
+}
+
+
+nav {
+	header & {
+		background-color: darken($blue, 15%);
+	}
+
+	.branding {
+		float: left;
+		display: none;
+		@include break(1000px) {
+			display: block;
+		}
+	}
+
+	.branding h1 {
+		font-size: 2.75rem;
+		overflow: hidden;
+		margin: 0;
+		color: $yellow;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		@include clearfix;
+	}
+
+	ul li {
+		@include break(760px) {
+		float: right;
+	}
+		padding: 10px 5px;
+	}
+
+
+	ul li a {
+		text-decoration: none;
+		padding: 10px 5px;
+
+
+		&:hover {
+			color: $yellow;
+		}
+
+		header &:hover {
+			background-color: darken($blue, 20%);
+		}
+
+		footer & {
+			color: white;
+		}
+	}
+	footer & {
+		margin-top: 20px;
+		min-height: 200px;
+		background-color: darken($blue, 15%);
+
+    @include break(0, 600px) {//between 0 and 600px of viewport size the footer nav is hidden
+      display: none;
+    }
+	}
+}

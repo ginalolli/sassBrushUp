@@ -1,0 +1,28 @@
+@import "variables";
+@import "mixins";
+@import "normalize";
+@import "base";
+@import "interface";
+
+@import "modules/media";
+@import "modules/backgrounds";
+@import "modules/tables";
+@import "modules/navigation";
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1.8rem;
+  font-family: $font-main;
+  color: $color-main;
+  background-color: $color-backgrounds;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
